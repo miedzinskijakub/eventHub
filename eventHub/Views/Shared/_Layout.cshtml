@@ -25,6 +25,27 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="EventViewers" asp-action="Index">Wydarzenia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Dodaj Wydarzenia</a>
+                        </li>
+
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="PersonalEvents" asp-action="Index">Wydarzenia którymi się interesuje</a>
+                            </li>
+                        }
+                        else
+                        {                            
+                            <li class="nav-item">
+                            <span>Zaloguj się, aby zobaczyć wydarzenia którymi się interesuje</span>
+                            </li>
+
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
