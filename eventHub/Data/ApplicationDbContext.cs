@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using eventHub.Models;
 
 namespace eventHub.Data
 {
@@ -9,5 +10,9 @@ namespace eventHub.Data
             : base(options)
         {
         }
+        public DbSet<eventHub.Models.Event>? Event { get; set; }
+        public DbSet<eventHub.Models.PersonalEvent>? PersonalEvent { get; set; }
+
+       
     }
 }

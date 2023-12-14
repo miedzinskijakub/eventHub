@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Miedziak\\Downloads\\eventHub\\eventHub\\eventHub\\eventHub.csproj": {}
+    "C:\\Users\\Miedziak\\Downloads\\beee\\eventHub\\eventHub\\eventHub.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Miedziak\\Downloads\\eventHub\\eventHub\\eventHub\\eventHub.csproj": {
+    "C:\\Users\\Miedziak\\Downloads\\beee\\eventHub\\eventHub\\eventHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Miedziak\\Downloads\\eventHub\\eventHub\\eventHub\\eventHub.csproj",
+        "projectUniqueName": "C:\\Users\\Miedziak\\Downloads\\beee\\eventHub\\eventHub\\eventHub.csproj",
         "projectName": "eventHub",
-        "projectPath": "C:\\Users\\Miedziak\\Downloads\\eventHub\\eventHub\\eventHub\\eventHub.csproj",
+        "projectPath": "C:\\Users\\Miedziak\\Downloads\\beee\\eventHub\\eventHub\\eventHub.csproj",
         "packagesPath": "C:\\Users\\Miedziak\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Miedziak\\Downloads\\eventHub\\eventHub\\eventHub\\obj\\",
+        "outputPath": "C:\\Users\\Miedziak\\Downloads\\beee\\eventHub\\eventHub\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Miedziak\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -56,9 +56,17 @@
               "target": "Package",
               "version": "[6.0.23, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[6.0.23, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
             }
           },
           "imports": [

@@ -1,11 +1,15 @@
-﻿using eventHub.Models;
+﻿using eventHub.Data;
+using eventHub.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+
 
 namespace eventHub.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -15,7 +19,9 @@ namespace eventHub.Controllers
 
         public IActionResult Index()
         {
+           
             return View();
+
         }
 
         public IActionResult Privacy()

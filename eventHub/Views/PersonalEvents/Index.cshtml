@@ -1,0 +1,32 @@
+﻿@model List<eventHub.Models.PersonalEvent>
+
+<h2>Wydarzenia zaznaczone jako zainteresowane</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Opis</th>
+            <th>Data</th>
+            <th>Lokalizacja</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personalEvent in Model)
+        {
+            <tr>
+                <td>@personalEvent.Event.Title</td>
+                <td>@personalEvent.Event.Description</td>
+                <td>@personalEvent.Event.Start.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@personalEvent.Event.Location</td>
+                <td>
+                    <form asp-action="UnmarkInterest" asp-route-eventId="@personalEvent.EventId" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="submit" value="Odznacz zainteresowanie" class="btn btn-danger" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
