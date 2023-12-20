@@ -61,7 +61,7 @@ namespace eventHub.Controllers
         // POST: Events/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Description,Start,Location")] Event @event)
+        public async Task<IActionResult> Create([Bind("Title,Description,Start,Location,Image")] Event @event, IFormFile image)
         {
             try
             {
@@ -76,6 +76,16 @@ namespace eventHub.Controllers
 
                     @event.UserId = user.Id;
 
+                    // Przetwarzanie przesyłanego obrazu
+                    if (image != null && image.Length > 0)
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            await image.CopyToAsync(ms);
+                            @event.Image = ms.ToArray();
+                        }
+                    }
+
                     _context.Add(@event);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
@@ -88,6 +98,7 @@ namespace eventHub.Controllers
 
             return View(@event);
         }
+
 
         // GET: Events/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -102,15 +113,12 @@ namespace eventHub.Controllers
             {
                 return NotFound();
             }
+
             return View(@event);
         }
-
-        // POST: Events/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Start,Location")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Start,Location, Image")] Event @event, IFormFile image)
         {
             if (id != @event.Id)
             {
@@ -132,6 +140,15 @@ namespace eventHub.Controllers
                     // Przypisz zalogowanego użytkownika do wydarzenia
                     @event.UserId = user.Id;
 
+                    if (image != null && image.Length > 0)
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            await image.CopyToAsync(ms);
+                            @event.Image = ms.ToArray();
+                        }
+                    }
+
                     _context.Update(@event);
                     await _context.SaveChangesAsync();
                 }
@@ -150,6 +167,7 @@ namespace eventHub.Controllers
             }
             return View(@event);
         }
+
 
 
         // GET: Events/Delete/5

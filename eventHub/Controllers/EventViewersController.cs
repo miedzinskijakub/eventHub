@@ -88,6 +88,33 @@ namespace eventHub.Controllers
             return View("Confirmation");
         }
 
+        public async Task<IActionResult> Search(string searchString)
+        {
+            var events = _context.Event.AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                events = events.Where(e =>
+                    e.Title.Contains(searchString) ||
+                    e.Description.Contains(searchString) ||
+                    e.Location.Contains(searchString) ||
+                    e.User.UserName.Contains(searchString));
+            }
+
+            var searchedEvents = await events.Include(e => e.User).ToListAsync();
+
+            var eventViewers = searchedEvents.Select(e => new EventViewer
+            {
+                Event = e
+            }).ToList();
+
+            ViewBag.SearchString = searchString;  // Dodajmy to, aby zachować wprowadzone dane w formularzu
+
+            return View("Index", eventViewers);
+        }
+
+
+
         // Akcja do usuwania zainteresowania użytkownika danym wydarzeniem
         //public async Task<IActionResult> NotInterested(int eventId)
         //{
