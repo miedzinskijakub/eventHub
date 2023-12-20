@@ -36,30 +36,30 @@ namespace eventHub.Controllers
                     .Where(e => !userInterests.Contains(e.Id))
                     .ToListAsync();
 
-                var statistics = events.Select(e => new EventViewer
+                var eventviewer = events.Select(e => new EventViewer
                 {
                     Event = e,
                     User = e.User,
                 }).ToList();
 
-                ViewBag.Statistics = statistics;
+                ViewBag.Eventviewer = eventviewer;
 
-                return View(statistics);
+                return View(eventviewer);
             }
 
             var allEvents = await _context.Event
                 .Include(e => e.User)
                 .ToListAsync();
 
-            var allStatistics = allEvents.Select(e => new EventViewer
+            var allEventviewer = allEvents.Select(e => new EventViewer
             {
                 Event = e,
                 User = e.User,
             }).ToList();
 
-            ViewBag.Statistics = allStatistics;
+            ViewBag.Eventviewer = allEventviewer;
 
-            return View(allStatistics);
+            return View(allEventviewer);
         }
 
 
@@ -84,24 +84,25 @@ namespace eventHub.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToAction("Index");
+            //return RedirectToAction("Confirmation");
+            return View("Confirmation");
         }
 
         // Akcja do usuwania zainteresowania użytkownika danym wydarzeniem
-        public async Task<IActionResult> NotInterested(int eventId)
-        {
-            IdentityUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+        //public async Task<IActionResult> NotInterested(int eventId)
+        //{
+        //    IdentityUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            var existingInterest = await _context.PersonalEvent
-                .FirstOrDefaultAsync(ui => ui.UserId == user.Id && ui.EventId == eventId);
+        //    var existingInterest = await _context.PersonalEvent
+        //        .FirstOrDefaultAsync(ui => ui.UserId == user.Id && ui.EventId == eventId);
 
-            if (existingInterest != null)
-            {
-                _context.PersonalEvent.Remove(existingInterest);
-                await _context.SaveChangesAsync();
-            }
+        //    if (existingInterest != null)
+        //    {
+        //        _context.PersonalEvent.Remove(existingInterest);
+        //        await _context.SaveChangesAsync();
+        //    }
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
     }
 }

@@ -19,30 +19,30 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="EventViewers" asp-action="Index">Polecane Wydarzenia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="EventViewers" asp-action="Index">Wydarzenia</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Dodaj Wydarzenia</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Twoje Wydarzenia</a>
                         </li>
 
 
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="PersonalEvents" asp-action="Index">Wydarzenia którymi się interesuje</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="PersonalEvents" asp-action="Index">Interesujące Cię Wydarzenia</a>
                             </li>
                         }
                         else
                         {                            
                             <li class="nav-item">
-                            <span>Zaloguj się, aby zobaczyć wydarzenia którymi się interesuje</span>
+                                <a class="nav-link text-dark">Zaloguj się, aby zobaczyć wydarzenia dodane do zainteresowanych</a>
                             </li>
 
                         }
@@ -60,7 +60,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - eventHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - eventHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Pozdrowienia</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

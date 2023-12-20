@@ -1,28 +1,32 @@
 ﻿@model IEnumerable<eventHub.Models.EventViewer>
 
-<h1>Wydarzenia</h1>
+@{
+    ViewData["Title"] = "Polecane Wydarzenia";
+}
+
+<h1>Wydarzenia, które mogą Cię zainteresować</h1>
 <hr />
 
 @if (Model.Any())
 {
-    foreach (var stat in Model)
+    foreach (var eventview in Model)
     {
-        <h3>@stat.Event.Title</h3>
-        <p>Description: @stat.Event.Description</p>
-        <p>Data rozpoczęcia: @stat.Event.Start</p>
-        <p>Lokalizacja: @stat.Event.Location</p>
-        <p>Wydarzenie dodał: @stat.Event.User</p>
+        <h3>@eventview.Event.Title</h3>
+        <p>Opis: @eventview.Event.Description</p>
+        <p>Data rozpoczęcia: @eventview.Event.Start</p>
+        <p>Lokalizacja: @eventview.Event.Location</p>
+        <p>Wydarzenie dodane przez: @eventview.Event.User</p>
 
         @if (User.Identity.IsAuthenticated)
         {
-            <form asp-action="Interested" asp-route-eventId="@stat.Event.Id" method="post">
+            <form asp-action="Interested" asp-route-eventId="@eventview.Event.Id" method="post">
                 @Html.AntiForgeryToken()
                 <input type="submit" value="Jestem zainteresowany" class="btn btn-success" />
             </form>
         }
         else
         {
-            <span>Zaloguj się, aby zaznaczyć zainteresowanie</span>
+            <span>Zaloguj się, aby dodać wydarzenie do zainteresowanych.</span>
         }
         <p></p>
         <hr />
@@ -30,5 +34,5 @@
 }
 else
 {
-    <p>No statistics to be displayed.</p>
+    <p>Brak zainteresowań do wyświetlenia.</p>
 }
