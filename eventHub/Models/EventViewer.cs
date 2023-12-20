@@ -6,6 +6,6 @@ namespace eventHub.Models
     {
         public Event Event { get; set; }
         public IdentityUser User { get; set; }
-
+        public byte[] Image => Event.Image;
     }
 }

@@ -7,6 +7,8 @@ namespace eventHub.Models
     public class Event
     {
         public int Id { get; set; }
+        public byte[]? Image { get; set; }
+
 
         [Required(ErrorMessage = "Tytuł jest wymagany.")]
         public string Title { get; set; }
@@ -22,5 +24,7 @@ namespace eventHub.Models
 
         public string? UserId { get; set; }
         public virtual IdentityUser? User { get; set; }
+
+
     }
 }
