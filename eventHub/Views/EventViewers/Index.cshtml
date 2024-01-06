@@ -25,11 +25,11 @@
 <h1>Wydarzenia, które mogą Cię zainteresować</h1>
 <hr />
 
-<form asp-action="Search" method="get">
+<form asp-action="Search" method="get" class="mt-5">
     <div class="form-group">
         <label for="searchString">Wyszukaj wydarzenie:</label>
         <input type="text" id="searchString" name="searchString" value="@ViewBag.SearchString" class="form-control" />
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary">Szukaj</button>
     </div>
 </form>
 
@@ -39,11 +39,11 @@
     {
         <div class="event-container">
             <div class="event-details">
-                <h3>@eventview.Event.Title</h3>
-                <p>Opis: @eventview.Event.Description</p>
-                <p>Data rozpoczęcia: @eventview.Event.Start</p>
-                <p>Lokalizacja: @eventview.Event.Location</p>
-                <p>Wydarzenie dodane przez: @eventview.Event.User</p>
+                <h3 class="display-6">@eventview.Event.Title</h3>
+                <p class="mb-1 ms-1"><i class="fa-regular fa-calendar"></i> @eventview.Event.Start</p>
+                <p class="mb-1 ms-1"><i class="fa-solid fa-location-dot"></i> @eventview.Event.Location</p>
+                <p class="ms-1"><i class="fa-solid fa-user"></i> Wydarzenie dodane przez @eventview.Event.User</p>
+                <p class="ms-1">@eventview.Event.Description</p>
 
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -54,7 +54,7 @@
                 }
                 else
                 {
-                    <span>Zaloguj się, aby dodać wydarzenie do zainteresowanych.</span>
+                    <p class="ms-1">Zaloguj się, aby dodać wydarzenie do zainteresowanych.</p>
                 }
             </div>
 
@@ -73,5 +73,5 @@
 }
 else
 {
-    <p>Brak zainteresowań do wyświetlenia.</p>
+    <p>Brak wydarzeń do wyświetlenia.</p>
 }

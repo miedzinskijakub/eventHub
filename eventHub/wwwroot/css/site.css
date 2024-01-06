@@ -1,5 +1,15 @@
+:root {
+    --secondary-1: #0E0C11;
+    --secondary-2: #302A38;
+    --secondary-highlight: #BB7EC9;
+    --light-1: #E4E2EE;
+    --darker-25: rgba(0,0,0,0.25);
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -8,11 +18,52 @@ html {
   }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
   margin-bottom: 60px;
 }
+
+.home-index__title {
+    margin-block-start: 30%
+}
+
+.home-index__title > * {
+    filter: drop-shadow(0 0 2px var(--secondary-highlight));
+}
+
+@media (min-width: 576px) {
+    .navbar-brand {
+        border-inline-end: solid 1px white;
+        padding-inline-end: 16px;
+    }
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding-inline: 6px;
+}
+
+nav > .container {
+    overflow-x:auto;
+}
+
+.nav__warning {
+    margin-bottom: unset;
+}
+
+form {
+    margin-block-end: 48px;
+}
+
+form:not(.form--compact) > *,
+form:not(.form--compact) .form-group > *,
+.form--compact .form-group {
+    margin-block-end: 16px;
+}
+
+form#account p {
+    text-align: center;
+    margin-block-end: 8px;
+}
+
+

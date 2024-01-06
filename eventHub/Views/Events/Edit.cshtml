@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit" asp-route-id="@Model?.Id" method="post" enctype="multipart/form-data" novalidate>
+        <form asp-action="Edit" asp-route-id="@Model?.Id" method="post" enctype="multipart/form-data" novalidate class="form--compact">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
