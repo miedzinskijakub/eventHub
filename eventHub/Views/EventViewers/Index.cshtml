@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<eventHub.Models.EventViewer>
 
 @{
-    ViewData["Title"] = "Polecane Wydarzenia";
+    ViewData["Title"] = "Recommended Events";
 }
 
 <style>
@@ -22,14 +22,14 @@
     }
 </style>
 
-<h1>Wydarzenia, które mogą Cię zainteresować</h1>
+<h1>Events That May Interest You</h1>
 <hr />
 
 <form asp-action="Search" method="get" class="mt-5">
     <div class="form-group">
-        <label for="searchString">Wyszukaj wydarzenie:</label>
+        <label for="searchString">Search for an event:</label>
         <input type="text" id="searchString" name="searchString" value="@ViewBag.SearchString" class="form-control" />
-        <button type="submit" class="btn btn-primary">Szukaj</button>
+        <button type="submit" class="btn btn-primary">Search</button>
     </div>
 </form>
 
@@ -42,19 +42,19 @@
                 <h3 class="display-6">@eventview.Event.Title</h3>
                 <p class="mb-1 ms-1"><i class="fa-regular fa-calendar"></i> @eventview.Event.Start</p>
                 <p class="mb-1 ms-1"><i class="fa-solid fa-location-dot"></i> @eventview.Event.Location</p>
-                <p class="ms-1"><i class="fa-solid fa-user"></i> Wydarzenie dodane przez @eventview.Event.User</p>
+                <p class="ms-1"><i class="fa-solid fa-user"></i> Event created by @eventview.Event.User</p>
                 <p class="ms-1">@eventview.Event.Description</p>
 
                 @if (User.Identity.IsAuthenticated)
                 {
                     <form asp-action="Interested" asp-route-eventId="@eventview.Event.Id" method="post">
                         @Html.AntiForgeryToken()
-                        <input type="submit" value="Jestem zainteresowany" class="btn btn-success" />
+                        <input type="submit" value="I'm Interested" class="btn btn-success" />
                     </form>
                 }
                 else
                 {
-                    <p class="ms-1">Zaloguj się, aby dodać wydarzenie do zainteresowanych.</p>
+                    <p class="ms-1">Login to add the event to interested.</p>
                 }
             </div>
 
@@ -73,5 +73,5 @@
 }
 else
 {
-    <p>Brak wydarzeń do wyświetlenia.</p>
+    <p>No events to display.</p>
 }

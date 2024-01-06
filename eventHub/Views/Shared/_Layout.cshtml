@@ -27,22 +27,22 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>*@
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="EventViewers" asp-action="Index">Polecane Wydarzenia</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="EventViewers" asp-action="Index">Recommended Events</a>
                         </li>
 
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Events" asp-action="Index">Twoje Wydarzenia</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Events" asp-action="Index">Your Events</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="PersonalEvents" asp-action="Index">Interesujące Cię Wydarzenia</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="PersonalEvents" asp-action="Index">Events You Are Interested In</a>
                             </li>
                         }
                         else
                         {                            
                             <li class="nav-item">
-                                <a class="nav__warning nav-link text-light bg-primary px-3" asp-area="" asp-controller="PersonalEvents" asp-action="Index">Zaloguj się, aby zobaczyć interesujące Cię wydarzenia</a>
+                                <a class="nav__warning nav-link text-light bg-primary px-3" asp-area="" asp-controller="PersonalEvents" asp-action="Index">Login to see the events you are interested in</a>
                             </li>
 
                         }
@@ -60,7 +60,7 @@
 
     <footer class="footer text-muted">
         <div class="container">
-            &copy; 2023 - eventHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Pozdrowienia</a>
+            &copy; 2023 - eventHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Greetings</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

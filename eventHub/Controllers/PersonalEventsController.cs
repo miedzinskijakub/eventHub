@@ -49,6 +49,5 @@ namespace eventHub.Controllers
             return RedirectToAction("Index");
         }
 
-        // Dodaj inne akcje w zależności od potrzeb, np. Create, Edit, Delete, etc.
     }
 }

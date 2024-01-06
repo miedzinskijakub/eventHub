@@ -129,7 +129,7 @@ namespace eventHub.Controllers
             {
                 try
                 {
-                    // Pobierz zalogowanego użytkownika
+                    // Pobranie zalogowanego użytkownika
                     var user = await _userManager.GetUserAsync(User);
 
                     if (user == null)
@@ -137,7 +137,7 @@ namespace eventHub.Controllers
                         return RedirectToAction("Login", "Account");
                     }
 
-                    // Przypisz zalogowanego użytkownika do wydarzenia
+                    // Przypisanie zalogowanego użytkownika do wydarzenia
                     @event.UserId = user.Id;
 
                     if (image != null && image.Length > 0)
