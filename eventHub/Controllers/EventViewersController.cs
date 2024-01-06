@@ -108,7 +108,7 @@ namespace eventHub.Controllers
                 Event = e
             }).ToList();
 
-            ViewBag.SearchString = searchString;  // Dodajmy to, aby zachować wprowadzone dane w formularzu
+            ViewBag.SearchString = searchString; 
 
             return View("Index", eventViewers);
         }

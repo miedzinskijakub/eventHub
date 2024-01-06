@@ -76,7 +76,6 @@ namespace eventHub.Controllers
 
                     @event.UserId = user.Id;
 
-                    // Przetwarzanie przesyłanego obrazu
                     if (image != null && image.Length > 0)
                     {
                         using (var ms = new MemoryStream())
@@ -129,7 +128,6 @@ namespace eventHub.Controllers
             {
                 try
                 {
-                    // Pobierz zalogowanego użytkownika
                     var user = await _userManager.GetUserAsync(User);
 
                     if (user == null)
@@ -137,7 +135,6 @@ namespace eventHub.Controllers
                         return RedirectToAction("Login", "Account");
                     }
 
-                    // Przypisz zalogowanego użytkownika do wydarzenia
                     @event.UserId = user.Id;
 
                     if (image != null && image.Length > 0)
