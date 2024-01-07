@@ -33,3 +33,5 @@ Celem projektu eventHub jest stworzenie platformy, która ułatwi organizację i
 
 ## Technologia
 Projekt jest zrealizowany w technologii ASP.NET, zapewniającej solidną podstawę dla aplikacji internetowych opartych na architekturze klient-serwer.
+
+Wedle ustaleń z zajęć, projekt nie jest zahostowany w Internecie.
