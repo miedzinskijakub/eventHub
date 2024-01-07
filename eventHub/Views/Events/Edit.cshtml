@@ -35,11 +35,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Image" class="control-label"></label>
-                <input type="file" asp-for="Image" class="form-control" />
+                <input id="file-input" type="file" asp-for="Image" class="form-control" />
+                <p id="file-result"></p>
                 <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-
-           
+            </div>          
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -56,3 +55,23 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+    <script>
+        let fileInput = document.getElementById("file-input");
+        let fileResult = document.getElementById("file-result");
+        let fileSubmit = document.getElementById("file-submit");
+
+        fileInput.addEventListener("change", function () {
+            if (fileInput.files.length > 0) {
+                const fileSize = fileInput.files.item(0).size;
+                const fileMb = fileSize / 1024 ** 2;
+                if (fileMb >= 2) {
+                    fileResult.innerHTML = "Please select a file less than 2MB.";
+                    fileSubmit.disabled = true;
+                } else {
+                    fileResult.innerHTML = "Success, your file is " + fileMb.toFixed(1) + "MB.";
+                    fileSubmit.disabled = false;
+                }
+            }
+        });
+    </script>

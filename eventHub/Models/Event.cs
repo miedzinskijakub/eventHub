@@ -10,16 +10,16 @@ namespace eventHub.Models
         public byte[]? Image { get; set; }
 
 
-        [Required(ErrorMessage = "Tytuł jest wymagany.")]
+        [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "Opis jest wymagany.")]
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Data jest wymagana.")]
+        [Required(ErrorMessage = "Date is required")]
         public DateTime Start { get; set; }
 
-        [Required(ErrorMessage = "Lokalizacja jest wymagana.")]
+        [Required(ErrorMessage = "Location is required")]
         public string Location { get; set; }
 
         public string? UserId { get; set; }
