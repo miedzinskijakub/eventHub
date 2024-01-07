@@ -90,6 +90,8 @@ namespace eventHub.Controllers
 
         public async Task<IActionResult> Search(string searchString)
         {
+            var user = await _userManager.GetUserAsync(User);
+
             var events = _context.Event.AsQueryable();
 
             if (!String.IsNullOrEmpty(searchString))
@@ -101,6 +103,13 @@ namespace eventHub.Controllers
                     e.User.UserName.Contains(searchString));
             }
 
+            var userInterests = await _context.PersonalEvent
+                .Where(pe => pe.UserId == user.Id)
+                .Select(pe => pe.EventId)
+                .ToListAsync();
+
+            events = events.Where(e => !userInterests.Contains(e.Id));
+
             var searchedEvents = await events.Include(e => e.User).ToListAsync();
 
             var eventViewers = searchedEvents.Select(e => new EventViewer
@@ -108,7 +117,7 @@ namespace eventHub.Controllers
                 Event = e
             }).ToList();
 
-            ViewBag.SearchString = searchString; 
+            ViewBag.SearchString = searchString;
 
             return View("Index", eventViewers);
         }
