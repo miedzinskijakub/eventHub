@@ -33,6 +33,13 @@
                 <td>@personalEvent.Event.Description</td>
                 <td>@personalEvent.Event.Start.ToString("yyyy-MM-dd HH:mm")</td>
                 <td>@personalEvent.Event.Location</td>
+
+                <td>
+                    <form asp-action="UnmarkInterest" asp-route-eventId="@personalEvent.EventId" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="submit" value="I'm not interested" class="btn btn-danger" />
+                    </form>
+                </td>
                 <td>
                     <div class="event-image">
                         @if (@personalEvent.Event.Image != null && @personalEvent.Event.Image.Length > 0)
@@ -42,13 +49,6 @@
                             <img src="@imageUrl" alt="Event Image" class="event-image" />
                         }
                     </div>
-                </td>
-              
-                <td>
-                    <form asp-action="UnmarkInterest" asp-route-eventId="@personalEvent.EventId" method="post">
-                        @Html.AntiForgeryToken()
-                        <input type="submit" value="I'm not interested" class="btn btn-danger" />
-                    </form>
                 </td>
             </tr>
         }
